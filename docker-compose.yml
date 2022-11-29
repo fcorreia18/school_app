@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+  database:
+    image: postgres
+    container_name: database_school_app
+    ports:
+      - "5432:5432"
+    environment: 
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=school_app
+      - POSTGRES_DB=school_app
+    volumes:
+      - pgdata:/data/postgres
+    # network_mode: host
+  app:
+    build: .
+    container_name: school_app
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/users/app
+    depends_on:
+      - database
+    # network_mode: host
+  
+  
+
+volumes:
+  pgdata:
+    driver: local
