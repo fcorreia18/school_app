@@ -1,5 +1,1 @@
-export type SCHOOLLEVEL = {
-    ensinoDeBase: string;
-    ensinoMedio: string;
-    ensinoSuperior: string;
-};
+export type SCHOOLLEVEL = "ensinoDeBase" | "ensinoMedio" | "ensinoSuperior";
