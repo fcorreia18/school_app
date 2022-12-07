@@ -1,7 +1,8 @@
 import { Response } from "express";
 import { getRepository, Repository } from "typeorm";
 
-import { ISchoolDTO } from "../../dtos/ISchoolDTO";
+import { AppError } from "../../../../errors/AppError";
+import { ICreateSchoolDTO } from "../../dtos/ICreateSchoolDTO";
 import { School } from "../../entitites/School";
 import { ISchoolRepository } from "../ISchoolRepository";
 
@@ -10,19 +11,28 @@ export class SchoolRepository implements ISchoolRepository {
     constructor() {
         this.schoolRepository = getRepository(School);
     }
-    create(data: ISchoolDTO): Promise<Response> {
-        throw new Error("Method not implemented.");
+
+    async create(data: ICreateSchoolDTO): Promise<void> {
+        const newUser = this.schoolRepository.create(data);
+        await this.schoolRepository.save(newUser);
     }
-    findAll({ location }: ISchoolDTO): Promise<void | School[]> {
-        throw new Error("Method not implemented.");
+    list(): Promise<School[]> {
+        throw new AppError("Method not implemented!", 405);
     }
-    findByName(name: string): Promise<void | School> {
-        throw new Error("Method not implemented.");
+    async findById(id: string): Promise<School | undefined> {
+        const school = await this.schoolRepository.findOne({ id });
+        return school;
     }
-    update(data: ISchoolDTO): Promise<Response> {
-        throw new Error("Method not implemented.");
+    async findByName({ name }: ICreateSchoolDTO): Promise<School | undefined> {
+        const school = await this.schoolRepository.findOne({ name });
+        return school;
     }
-    delete(id: string): Promise<Response> {
-        throw new Error("Method not implemented.");
+    async findByLocation({
+        location: { lat, long },
+    }: ICreateSchoolDTO): Promise<School[] | undefined> {
+        const school = await this.schoolRepository.find({
+            where: { lat, long },
+        });
+        return school;
     }
 }

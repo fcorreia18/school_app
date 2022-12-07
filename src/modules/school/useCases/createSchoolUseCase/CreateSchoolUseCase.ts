@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
 
-import { ISchoolDTO } from "../../dtos/ISchoolDTO";
+import { ISchoolDTO } from "../../dtos/ICreateSchoolDTO";
 import { ISchoolRepository } from "../../repositories/ISchoolRepository";
 
 @injectable()

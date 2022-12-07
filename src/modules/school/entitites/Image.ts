@@ -3,16 +3,16 @@ import {
     Entity,
     JoinColumn,
     ManyToOne,
-    PrimaryColumn,
     PrimaryGeneratedColumn,
 } from "typeorm";
+import { v4 as uuidV4 } from "uuid";
 
 import { School } from "./School";
 
 @Entity("images")
 export default class Image {
     @PrimaryGeneratedColumn("uuid")
-    id: number;
+    id: string;
 
     @Column()
     path: string;
@@ -22,4 +22,10 @@ export default class Image {
     @ManyToOne(() => School, (school) => school.images)
     @JoinColumn({ name: "school_id" })
     school: School;
+
+    constructor() {
+        if (!this.id) {
+            this.id = uuidV4();
+        }
+    }
 }
