@@ -1,6 +1,6 @@
 {
     "type": "postgres",
-    "host":"localhost",
+    "host":"database_school_app",
     "port": 5432,
     "database": "school_app",
     "username": "docker",

@@ -11,7 +11,12 @@ export class CreateUserUseCase {
         @inject("UsersRepository")
         private usersRepository: IUsersRepository
     ) {}
-    async execute({ name, email, password }: ICreateUserDTO): Promise<void> {
+    async execute({
+        name,
+        email,
+        password,
+        isAdmin,
+    }: ICreateUserDTO): Promise<void> {
         const userAlreadExist = await this.usersRepository.findByEmail(email);
         if (userAlreadExist) {
             throw new AppError("User Already Exist!");
@@ -22,6 +27,7 @@ export class CreateUserUseCase {
             name,
             email,
             password: encriptedPassword,
+            isAdmin,
         });
     }
 }
