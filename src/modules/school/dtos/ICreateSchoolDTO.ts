@@ -7,5 +7,8 @@ export interface ICreateSchoolDTO {
         lat: string;
     };
     description: string;
-    level: SCHOOLDEGREE;
+    degree: SCHOOLDEGREE;
+    about?: string;
+    opening_hours?: string;
+    open_on_weekends?: boolean;
 }

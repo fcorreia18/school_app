@@ -13,13 +13,19 @@ export class CreateSchoolUseCase {
         name,
         location: { lat, long },
         description,
-        level,
+        degree,
+        about,
+        open_on_weekends,
+        opening_hours,
     }: ICreateSchoolDTO): Promise<void> {
         await this.SchoolRepository.create({
             name,
             location: { lat, long },
             description,
-            level,
+            degree,
+            about,
+            open_on_weekends,
+            opening_hours,
         });
     }
 }

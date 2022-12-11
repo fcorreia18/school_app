@@ -6,6 +6,15 @@ import { CreateSchoolUseCase } from "./CreateSchoolUseCase";
 export class CreateSchoolController {
     async handle(req: Request, res: Response): Promise<Response> {
         const createSchoolUseCase = container.resolve(CreateSchoolUseCase);
+        const {
+            name,
+            location: { lat, long },
+            description,
+            degree,
+            about,
+            open_on_weekends,
+            opening_hours,
+        } = req.body;
 
         return res.send();
     }
