@@ -1,12 +1,12 @@
 import { Router } from "express";
 
 import { authenticateRoutes } from "./authenticate.routes";
-import { categoryRoutes } from "./category.routes";
+import { schoolRoutes } from "./schools.routes";
 import { userRoutes } from "./user.routes";
 
 const routes = Router();
 
-routes.use("/categories", categoryRoutes);
+routes.use("/schools", schoolRoutes);
 routes.use("/users", userRoutes);
 routes.use(authenticateRoutes);
 

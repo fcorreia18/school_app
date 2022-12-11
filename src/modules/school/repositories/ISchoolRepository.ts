@@ -1,5 +1,3 @@
-import { Response } from "express";
-
 import { ICreateSchoolDTO } from "../dtos/ICreateSchoolDTO";
 import { School } from "../entitites/School";
 

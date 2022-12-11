@@ -2,7 +2,7 @@ import "reflect-metadata";
 import "express-async-errors";
 import cors from "cors";
 import express, { Application, NextFunction, Request, Response } from "express";
-import path from "path";
+// import path from "path";
 import swaggerUI from "swagger-ui-express";
 
 import "./database";

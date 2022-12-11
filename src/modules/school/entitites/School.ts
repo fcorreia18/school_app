@@ -26,9 +26,6 @@ export class School {
     longitude: number;
 
     @Column()
-    location: string;
-
-    @Column()
     about: string;
 
     @Column()

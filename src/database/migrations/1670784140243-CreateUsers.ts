@@ -1,15 +1,14 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateSchool1670420074383 implements MigrationInterface {
+export class CreateUsers1670784140243 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "schools",
+                name: "users",
                 columns: [
                     {
                         name: "id",
                         type: "uuid",
-                        unsigned: true,
                         isPrimary: true,
                         isGenerated: true,
                     },
@@ -18,31 +17,16 @@ export class CreateSchool1670420074383 implements MigrationInterface {
                         type: "varchar",
                     },
                     {
-                        name: "opening_hours",
+                        name: "email",
+                        type: "varchar",
+                        isUnique: true,
+                    },
+                    {
+                        name: "password",
                         type: "varchar",
                     },
                     {
-                        name: "longitude",
-                        type: "decimal",
-                        scale: 10,
-                        precision: 2,
-                    },
-                    {
-                        name: "latitude",
-                        type: "decimal",
-                        scale: 10,
-                        precision: 2,
-                    },
-                    {
-                        name: "about",
-                        type: "text",
-                    },
-                    {
-                        name: "degree",
-                        type: "varchar",
-                    },
-                    {
-                        name: "open_on_weekends",
+                        name: "isAdmin",
                         type: "boolean",
                         default: false,
                     },
@@ -62,6 +46,6 @@ export class CreateSchool1670420074383 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("schools");
+        await queryRunner.dropTable("users");
     }
 }
