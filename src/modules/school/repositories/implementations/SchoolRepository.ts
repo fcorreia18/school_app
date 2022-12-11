@@ -2,7 +2,7 @@ import { getRepository, Repository } from "typeorm";
 
 import { AppError } from "../../../../errors/AppError";
 import { ICreateSchoolDTO } from "../../dtos/ICreateSchoolDTO";
-import { School } from "../../entitites/School";
+import { School } from "../../entities/School";
 import { ISchoolRepository } from "../ISchoolRepository";
 
 export class SchoolRepository implements ISchoolRepository {

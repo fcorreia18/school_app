@@ -1,5 +1,5 @@
 import { ICreateSchoolDTO } from "../dtos/ICreateSchoolDTO";
-import { School } from "../entitites/School";
+import { School } from "../entities/School";
 
 export interface ISchoolRepository {
     create(school: ICreateSchoolDTO): Promise<void>;

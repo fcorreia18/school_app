@@ -2,7 +2,6 @@ import "reflect-metadata";
 import "express-async-errors";
 import cors from "cors";
 import express, { Application, NextFunction, Request, Response } from "express";
-// import path from "path";
 import swaggerUI from "swagger-ui-express";
 
 import "./database";
@@ -20,8 +19,6 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/api/v1", routes);
-
-// app.use("/uploads", express.static(path.join(__dirname, "..", "uploads")));
 
 app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
     if (error instanceof AppError) {

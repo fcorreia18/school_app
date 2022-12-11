@@ -1,5 +1,5 @@
 import { SCHOOLDEGREE } from "../../../utils/schoolDegree";
-import Image from "../entitites/Image";
+import Image from "../entities/Image";
 
 export interface ICreateSchoolDTO {
     name: string;
