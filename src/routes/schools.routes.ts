@@ -11,7 +11,7 @@ const createSchoolController = new CreateSchoolController();
 schoolRoutes.post(
     "/",
     ensureAuthenticated,
-    upload.array("image"),
+    upload.array("images"),
     createSchoolController.handle
 );
 

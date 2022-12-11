@@ -2,7 +2,7 @@ import { ICreateSchoolDTO } from "../dtos/ICreateSchoolDTO";
 import { School } from "../entitites/School";
 
 export interface ISchoolRepository {
-    create(data: ICreateSchoolDTO): Promise<void>;
+    create(school: ICreateSchoolDTO): Promise<void>;
     list(): Promise<School[] | void>;
     findByLocation({ location }: ICreateSchoolDTO): Promise<School[] | void>;
     findById(id: string): Promise<School | void>;

@@ -1,4 +1,3 @@
-import { Response } from "express";
 import { getRepository, Repository } from "typeorm";
 
 import { AppError } from "../../../../errors/AppError";
@@ -12,10 +11,11 @@ export class SchoolRepository implements ISchoolRepository {
         this.schoolRepository = getRepository(School);
     }
 
-    async create(data: ICreateSchoolDTO): Promise<void> {
-        const newUser = this.schoolRepository.create(data);
-        await this.schoolRepository.save(newUser);
+    async create(school: ICreateSchoolDTO): Promise<void> {
+        const newSchool = this.schoolRepository.create(school);
+        await this.schoolRepository.save(newSchool);
     }
+
     list(): Promise<School[]> {
         throw new AppError("Method not implemented!", 405);
     }

@@ -11,7 +11,7 @@ import { v4 as uuidV4 } from "uuid";
 
 import Image from "./Image";
 
-@Entity("school")
+@Entity("schools")
 export class School {
     @PrimaryGeneratedColumn("uuid")
     id?: string;

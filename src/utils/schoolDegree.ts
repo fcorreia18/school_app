@@ -1,1 +1,5 @@
-export type SCHOOLDEGREE = "ensinoDeBase" | "ensinoMedio" | "ensinoSuperior";
+export type SCHOOLDEGREE =
+    | "ensinoDeBase - ensinoMedio"
+    | "ensinoDeBase"
+    | "ensinoMedio"
+    | "ensinoSuperior";
