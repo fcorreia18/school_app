@@ -28,7 +28,6 @@ export class CreateSchoolController {
             opening_hours,
             images,
         });
-        console.log(school, "ola");
         return res.status(201).json(school);
     }
 }

@@ -1,8 +1,12 @@
 import { inject, injectable } from "tsyringe";
 
 import { ICreateSchoolDTO } from "../../dtos/ICreateSchoolDTO";
+import { School } from "../../entities/School";
 import { ISchoolRepository } from "../../repositories/ISchoolRepository";
 
+interface IResponse {
+    school: School;
+}
 @injectable()
 export class CreateSchoolUseCase {
     constructor(
@@ -18,8 +22,8 @@ export class CreateSchoolUseCase {
         open_on_weekends,
         opening_hours,
         images,
-    }: ICreateSchoolDTO): Promise<void> {
-        await this.schoolRepository.create({
+    }: ICreateSchoolDTO): Promise<IResponse> {
+        const school = await this.schoolRepository.create({
             name,
             latitude,
             longitude,
@@ -29,5 +33,9 @@ export class CreateSchoolUseCase {
             opening_hours,
             images,
         });
+        const res: IResponse = {
+            school,
+        };
+        return res;
     }
 }

@@ -11,9 +11,10 @@ export class SchoolRepository implements ISchoolRepository {
         this.schoolRepository = getRepository(School);
     }
 
-    async create(school: ICreateSchoolDTO): Promise<void> {
+    async create(school: ICreateSchoolDTO): Promise<School> {
         const newSchool = this.schoolRepository.create(school);
-        await this.schoolRepository.save(newSchool);
+        const createSchool = await this.schoolRepository.save(newSchool);
+        return createSchool;
     }
 
     list(): Promise<School[]> {

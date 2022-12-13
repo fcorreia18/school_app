@@ -1,5 +1,4 @@
 import { SCHOOLDEGREE } from "../../../utils/schoolDegree";
-import Image from "../entities/Image";
 
 export interface ICreateSchoolDTO {
     name: string;
@@ -9,5 +8,7 @@ export interface ICreateSchoolDTO {
     about?: string;
     opening_hours?: string;
     open_on_weekends?: boolean;
-    images?: Image[];
+    images?: {
+        path: string;
+    }[];
 }
