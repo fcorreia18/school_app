@@ -8,7 +8,8 @@ export class CreateSchoolController {
         const createSchoolUseCase = container.resolve(CreateSchoolUseCase);
         const {
             name,
-            location: { lat, long },
+            latitude,
+            longitude,
             degree,
             about,
             open_on_weekends,
@@ -17,15 +18,17 @@ export class CreateSchoolController {
         const requestImages = req.files as Express.Multer.File[];
         const images = requestImages.map((image) => ({ path: image.filename }));
 
-        const school = createSchoolUseCase.execute({
+        const school = await createSchoolUseCase.execute({
             name,
-            location: { lat, long },
+            latitude,
+            longitude,
             degree,
             about,
             open_on_weekends,
             opening_hours,
+            images,
         });
-
+        console.log(school, "ola");
         return res.status(201).json(school);
     }
 }

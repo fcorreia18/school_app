@@ -3,10 +3,8 @@ import Image from "../entities/Image";
 
 export interface ICreateSchoolDTO {
     name: string;
-    location: {
-        long: string;
-        lat: string;
-    };
+    longitude: number;
+    latitude: number;
     degree: SCHOOLDEGREE;
     about?: string;
     opening_hours?: string;

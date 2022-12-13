@@ -28,10 +28,11 @@ export class SchoolRepository implements ISchoolRepository {
         return school;
     }
     async findByLocation({
-        location: { lat, long },
+        latitude,
+        longitude,
     }: ICreateSchoolDTO): Promise<School[] | undefined> {
         const school = await this.schoolRepository.find({
-            where: { lat, long },
+            where: { latitude, longitude },
         });
         return school;
     }

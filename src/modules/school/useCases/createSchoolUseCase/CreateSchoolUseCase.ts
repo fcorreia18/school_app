@@ -11,7 +11,8 @@ export class CreateSchoolUseCase {
     ) {}
     async execute({
         name,
-        location: { lat, long },
+        latitude,
+        longitude,
         degree,
         about,
         open_on_weekends,
@@ -20,7 +21,8 @@ export class CreateSchoolUseCase {
     }: ICreateSchoolDTO): Promise<void> {
         await this.schoolRepository.create({
             name,
-            location: { lat, long },
+            latitude,
+            longitude,
             degree,
             about,
             open_on_weekends,

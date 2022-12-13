@@ -19,10 +19,10 @@ export class School {
     @Column()
     name: string;
 
-    @Column()
+    @Column({ type: "decimal", precision: 10, scale: 2, default: 0 })
     latitude: number;
 
-    @Column()
+    @Column({ type: "decimal", precision: 10, scale: 2, default: 0 })
     longitude: number;
 
     @Column()
