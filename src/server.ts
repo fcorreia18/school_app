@@ -34,4 +34,4 @@ app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerFile));
 // end middlewares
 
 // sa
-app.listen(8000, () => console.log("listening at port 8000"));
+app.listen(1337, () => console.log("listening at port 1337"));

@@ -1,10 +1,6 @@
 {
     "type": "postgres",
-    "host":"database_school_app",
-    "port": 5432,
-    "database": "school_app",
-    "username": "docker",
-    "password": "school_app",
+    "url":"postgresql://postgres:YRycfuMzCKiKC8gX@db.nddaeuebmqjyqwdwcylk.supabase.co:5432/postgres",
     "entities": ["./src/modules/**/entities/*.ts"],
     "migrations": [
         "./src/database/migrations/*.ts"

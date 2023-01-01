@@ -30,8 +30,23 @@
                                     }
                                 },
                                 "example": {
-                                    "name": "ensino médio",
-                                    "description": "Técnico de informática"
+                                    "name": "ESCOLA 6008 EX 2015",
+                                    "latitude": "-30.3321389",
+                                    "longitude": "-58.1638166",
+                                    "about": "Escola do ensino primário ao secundario, localizada nos arredores da decima esquadra",
+                                    "degree": "ensinoDeBase - ensinoMedio",
+                                    "opening_hours": "Das 7:30 até 18H",
+                                    "open_on_weekends": "false",
+                                    "images": [
+                                        {
+                                            "path": "d0df5c542619e8e683d005e4ff17b503-1594893623067.png"
+                                        },
+                                        {
+                                            "path": "fd8340f91ac799970459a61c0171f94f-_Casos de uso.drawio.png"
+                                        }
+                                    ],
+                                    "created_at": "2022-12-13T13:55:51.246Z",
+                                    "updated_at": "2022-12-13T13:55:51.246Z"
                                 }
                             }
                         }
