@@ -1,13 +1,17 @@
 import Image from "../../entities/Image";
 
+type IResponse = {
+    id: string;
+    url: string;
+};
 export default {
-    render(image: Image) {
+    render(image: Image): IResponse {
         return {
             id: image.id,
-            url: `localhost:3333/uploads/${image.path}`,
+            url: `localhost:8000/tmp/schools_images/${image.path}`,
         };
     },
-    renderMany(images: Image[]) {
+    renderMany(images: Image[]): IResponse[] {
         return images.map((image) => this.render(image));
     },
 };
