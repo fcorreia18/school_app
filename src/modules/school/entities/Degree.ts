@@ -5,12 +5,12 @@ import {
     PrimaryGeneratedColumn,
     UpdateDateColumn,
 } from "typeorm";
-import { v4 as uuid } from "uuid";
+import { v4 as uuidV4 } from "uuid";
 
 @Entity("degrees")
 export class Degree {
     @PrimaryGeneratedColumn("uuid")
-    id: typeof uuid;
+    id?: string;
 
     @Column()
     name: string;
@@ -20,4 +20,10 @@ export class Degree {
 
     @UpdateDateColumn()
     updated_at: Date;
+
+    constructor() {
+        if (!this.id) {
+            this.id = uuidV4();
+        }
+    }
 }
