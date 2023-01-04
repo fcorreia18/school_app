@@ -1,14 +1,12 @@
 import { ICreateSchoolDTO } from "../dtos/ICreateSchoolDTO";
 import { School } from "../entities/School";
+import { IGenericRepository } from "./IGenericRepository";
 
-export interface ISchoolRepository {
-    create(school: ICreateSchoolDTO): Promise<School>;
-    list(): Promise<School[] | void>;
+export interface ISchoolRepository
+    extends IGenericRepository<School, ICreateSchoolDTO> {
     findByLocation({
         latitude,
         longitude,
     }: ICreateSchoolDTO): Promise<School[] | void>;
-    findById(id: string): Promise<School | void>;
     findByName({ name }: ICreateSchoolDTO): Promise<School | void>;
-    delete?(id: string): Promise<void>;
 }

@@ -7,4 +7,9 @@ export const AppDataSource = new DataSource({
     migrations: ["./src/database/migrations/*.ts"],
 });
 
-console.log(`${__dirname}/modules/**/entities/*.ts`);
+// console.log(`${__dirname}/modules/**/entities/*.ts`);
+AppDataSource.initialize()
+    .then(async () => {
+        console.log("database started");
+    })
+    .catch((error) => console.log(error));
