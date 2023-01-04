@@ -15,12 +15,11 @@ export class GetSchoolsUseCase {
     ) {}
     async execute(): Promise<IResponse> {
         const schools = await this.schoolRepository.list();
-        if(schools){
-        const res: IResponse = {
-            schools,
-        };
-        return res;
+        if (schools) {
+            const res: IResponse = {
+                schools,
+            };
+            return res;
         }
-        return;
     }
 }

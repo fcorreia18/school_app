@@ -16,9 +16,6 @@ schoolRoutes.post(
     upload.array("images"),
     createSchoolController.handle
 );
-schoolRoutes.get(
-    "/"
-    getSchoolsController.handle
-);
+schoolRoutes.get("/", getSchoolsController.handle);
 
 export { schoolRoutes };

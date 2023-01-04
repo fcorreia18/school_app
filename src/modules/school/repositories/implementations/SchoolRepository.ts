@@ -1,6 +1,6 @@
-import { getRepository, Repository } from "typeorm";
+import { Repository } from "typeorm";
 
-import { AppError } from "../../../../errors/AppError";
+import { AppDataSource } from "../../../../data-source";
 import { ICreateSchoolDTO } from "../../dtos/ICreateSchoolDTO";
 import { School } from "../../entities/School";
 import { ISchoolRepository } from "../ISchoolRepository";
@@ -8,7 +8,7 @@ import { ISchoolRepository } from "../ISchoolRepository";
 export class SchoolRepository implements ISchoolRepository {
     schoolRepository: Repository<School>;
     constructor() {
-        this.schoolRepository = getRepository(School);
+        this.schoolRepository = AppDataSource.getRepository(School);
     }
 
     async create(school: ICreateSchoolDTO): Promise<School> {
@@ -17,15 +17,16 @@ export class SchoolRepository implements ISchoolRepository {
         return createSchool;
     }
 
-    list(): Promise<School[]> {
-        throw new AppError("Method not implemented!", 405);
+    async list(): Promise<School[]> {
+        const schools = await AppDataSource.manager.find(School);
+        return schools;
     }
     async findById(id: string): Promise<School | undefined> {
-        const school = await this.schoolRepository.findOne({ id });
+        const school = await this.schoolRepository.findOneBy({ id });
         return school;
     }
     async findByName({ name }: ICreateSchoolDTO): Promise<School | undefined> {
-        const school = await this.schoolRepository.findOne({ name });
+        const school = await this.schoolRepository.findOneBy({ name });
         return school;
     }
     async findByLocation({

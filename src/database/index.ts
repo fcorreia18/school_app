@@ -1,3 +1,10 @@
-import { createConnection } from "typeorm";
+import { AppDataSource } from "../data-source";
+import { School } from "../modules/school/entities/School";
 
-createConnection();
+AppDataSource.initialize()
+    .then(() => {
+        console.log("Data Source has been initialized!");
+    })
+    .catch((err: Error) => {
+        console.error("Error during Data Source initialization", err);
+    });
