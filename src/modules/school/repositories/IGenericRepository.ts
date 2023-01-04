@@ -1,6 +1,6 @@
-export interface IGenericRepository {
-    list<T>(): T;
-    create<T>(args: T): Promise<T>;
-    findById<T>(args: string): Promise<T | void>;
-    delete?<T>(args: string): Promise<T>;
+export interface IGenericRepository<T> {
+    list(): Promise<T>;
+    create(args: T): Promise<T>;
+    findById(args: string): Promise<T | void>;
+    delete?(args: string): Promise<T>;
 }
