@@ -9,11 +9,45 @@ export class CreateCourses1673008349172 implements MigrationInterface {
                     {
                         name: "id",
                         type: "uuid",
+                        isPrimary: true,
+                        isGenerated: true,
+                    },
+                    {
+                        name: "name",
+                        type: "varchar",
+                    },
+                    {
+                        name: "duration",
+                        type: "integer",
+                    },
+                    {
+                        name: "degree_id",
+                        type: "uuid",
+                    },
+                    {
+                        name: "created_at",
+                        type: "timestamp",
+                        default: "now()",
+                    },
+                    {
+                        name: "updated_at",
+                        type: "timestamp",
+                        default: "now()",
+                    },
+                ],
+                foreignKeys: [
+                    {
+                        name: "DegreeCourses",
+                        columnNames: ["degree_id"],
+                        referencedTableName: "degrees",
+                        referencedColumnNames: ["id"],
                     },
                 ],
             })
         );
     }
 
-    public async down(queryRunner: QueryRunner): Promise<void> {}
+    public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.dropTable("courses");
+    }
 }

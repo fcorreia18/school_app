@@ -56,6 +56,32 @@ export class CreateSchool1670420074383 implements MigrationInterface {
                         type: "timestamp",
                         default: "now()",
                     },
+                    {
+                        name: "heros_id",
+                        type: "int",
+                    },
+                    {
+                        name: "skills_id",
+                        type: "int",
+                    },
+                ],
+                foreignKeys: [
+                    {
+                        name: "Hero",
+                        referencedTableName: "heros",
+                        referencedColumnNames: ["id"],
+                        columnNames: ["heros_id"],
+                        onDelete: "CASCADE",
+                        onUpdate: "CASCADE",
+                    },
+                    {
+                        name: "Skill",
+                        referencedTableName: "skills",
+                        referencedColumnNames: ["id"],
+                        columnNames: ["skills_id"],
+                        onDelete: "CASCADE",
+                        onUpdate: "CASCADE",
+                    },
                 ],
             })
         );

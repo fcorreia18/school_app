@@ -3,6 +3,8 @@ import {
     CreateDateColumn,
     Entity,
     JoinColumn,
+    JoinTable,
+    ManyToMany,
     ManyToOne,
     OneToMany,
     PrimaryGeneratedColumn,
@@ -10,15 +12,21 @@ import {
 } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
-import { Course } from "./Course";
+import { Degree } from "./Degree";
+import { School } from "./School";
 
-@Entity("degrees")
-export class Degree {
+@Entity("courses")
+export class Course {
     @PrimaryGeneratedColumn("uuid")
     id?: string;
 
     @Column()
     name: string;
+
+    @Column()
+    duration: number;
+
+    degree_id: number;
 
     @CreateDateColumn()
     created_at: Date;
@@ -26,9 +34,13 @@ export class Degree {
     @UpdateDateColumn()
     updated_at: Date;
 
-    @OneToMany(() => Course, (course) => course.degree)
+    @ManyToOne(() => Degree, (degree) => degree.courses)
     @JoinColumn({ name: "degree_id" })
-    courses: Course[];
+    degree: Degree;
+
+    @ManyToMany(() => School, (school) => school.courses)
+    @JoinTable()
+    schools: School[];
 
     constructor() {
         if (!this.id) {
