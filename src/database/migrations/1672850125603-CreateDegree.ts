@@ -20,7 +20,7 @@ export class CreateDegree1672850125603 implements MigrationInterface {
                         default: "now()",
                     },
                     {
-                        name: "created_at",
+                        name: "updated_at",
                         type: "timestamp",
                         default: "now()",
                     },

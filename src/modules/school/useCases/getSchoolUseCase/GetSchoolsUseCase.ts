@@ -1,9 +1,8 @@
 import { inject, injectable } from "tsyringe";
 
-import Image from "../../entities/Image";
 import { School } from "../../entities/School";
 import { ISchoolRepository } from "../../repositories/ISchoolRepository";
-import GetSchoolsImagesUseCase from "./GetSchoolsImagesUseCase";
+// import GetSchoolsImagesUseCase from "./GetSchoolsImagesUseCase";
 
 interface IResponse {
     schools: School[];
