@@ -8,6 +8,7 @@ export class CreateSchoolController {
         const createSchoolUseCase = container.resolve(CreateSchoolUseCase);
         const {
             name,
+            province,
             latitude,
             longitude,
             degree,
@@ -20,6 +21,7 @@ export class CreateSchoolController {
 
         const school = await createSchoolUseCase.execute({
             name,
+            province,
             latitude,
             longitude,
             degree,

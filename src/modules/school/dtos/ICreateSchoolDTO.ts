@@ -2,6 +2,7 @@ import { SCHOOLDEGREE } from "../../../utils/schoolDegree";
 
 export interface ICreateSchoolDTO {
     name: string;
+    province: string;
     longitude: number;
     latitude: number;
     degree: SCHOOLDEGREE;

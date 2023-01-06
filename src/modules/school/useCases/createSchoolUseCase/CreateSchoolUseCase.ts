@@ -15,6 +15,7 @@ export class CreateSchoolUseCase {
     ) {}
     async execute({
         name,
+        province,
         latitude,
         longitude,
         degree,
@@ -25,6 +26,7 @@ export class CreateSchoolUseCase {
     }: ICreateSchoolDTO): Promise<IResponse> {
         const school = await this.schoolRepository.create({
             name,
+            province,
             latitude,
             longitude,
             degree,
