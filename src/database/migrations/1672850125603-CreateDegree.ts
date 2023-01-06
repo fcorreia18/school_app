@@ -9,6 +9,8 @@ export class CreateDegree1672850125603 implements MigrationInterface {
                     {
                         name: "id",
                         type: "uuid",
+                        isPrimary: true,
+                        isGenerated: true,
                     },
                     {
                         name: "name",
