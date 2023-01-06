@@ -3,7 +3,6 @@ import {
     CreateDateColumn,
     Entity,
     JoinColumn,
-    JoinTable,
     ManyToMany,
     ManyToOne,
     OneToMany,
@@ -12,22 +11,15 @@ import {
 } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
-import { Degree } from "./Degree";
-import { School } from "./School";
-import { Subject } from "./Subject";
+import { Course } from "./Course";
 
-@Entity("courses")
-export class Course {
+@Entity("subjects")
+export class Subject {
     @PrimaryGeneratedColumn("uuid")
     id?: string;
 
     @Column()
     name: string;
-
-    @Column()
-    duration: number;
-
-    degree_id: string;
 
     @CreateDateColumn()
     created_at: Date;
@@ -35,16 +27,24 @@ export class Course {
     @UpdateDateColumn()
     updated_at: Date;
 
-    @ManyToOne(() => Degree, (degree) => degree.courses)
-    degree: Degree;
+    course_id: string;
 
-    @ManyToMany(() => School, (school) => school.courses)
-    schools: School[];
+    @ManyToMany(() => Course, (course) => course.subjects)
+    @JoinColumn({ name: "course_id" })
+    courses: Course[];
+    // @PrimaryColumn({ type: "int" })
+    // skills_id: number;
 
-    @ManyToMany(() => Subject, (subject) => subject.courses)
-    @JoinTable()
-    subjects: Subject[];
+    // @PrimaryColumn({ type: "int" })
+    // heros_id: number;
 
+    // @OneToOne(() => Hero)
+    // @JoinTable()
+    // hero: Hero;
+
+    // @OneToOne(() => Skill)
+    // @JoinTable()
+    // skill: Skill;
     constructor() {
         if (!this.id) {
             this.id = uuidV4();

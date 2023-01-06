@@ -3,6 +3,7 @@ import {
     CreateDateColumn,
     Entity,
     JoinColumn,
+    JoinTable,
     ManyToMany,
     ManyToOne,
     OneToMany,
@@ -55,23 +56,9 @@ export class School {
     @JoinColumn({ name: "school_id" })
     images: Image[];
 
-    course_id: string;
     @ManyToMany(() => Course, (course) => course.schools)
-    @JoinColumn({ name: "course_id" })
+    @JoinTable()
     courses: Course[];
-    // @PrimaryColumn({ type: "int" })
-    // skills_id: number;
-
-    // @PrimaryColumn({ type: "int" })
-    // heros_id: number;
-
-    // @OneToOne(() => Hero)
-    // @JoinTable()
-    // hero: Hero;
-
-    // @OneToOne(() => Skill)
-    // @JoinTable()
-    // skill: Skill;
 
     constructor() {
         if (!this.id) {
