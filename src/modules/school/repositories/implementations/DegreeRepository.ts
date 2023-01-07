@@ -18,9 +18,7 @@ export class DegreeRepository implements IDegreeRepository {
     }
 
     async list(): Promise<Degree[]> {
-        const degrees = await AppDataSource.manager.find(Degree, {
-            relations: { courses: true },
-        });
+        const degrees = await AppDataSource.manager.find(Degree); // , {relations: { courses: true },}
         return degrees;
     }
     async findById(id: string): Promise<Degree | undefined> {
