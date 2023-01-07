@@ -7,8 +7,7 @@ export class CreateDegreeController {
     async handle(req: Request, res: Response): Promise<Response> {
         const createDegreeUseCase = container.resolve(CreateDegreeUseCase);
         const { name } = req.body;
-
-        const degree = await createDegreeUseCase.execute(name);
+        const degree = await createDegreeUseCase.execute({ name });
         return res.status(201).json(degree);
     }
 }

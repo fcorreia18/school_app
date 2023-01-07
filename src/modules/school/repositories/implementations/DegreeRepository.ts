@@ -2,7 +2,6 @@ import { Repository } from "typeorm";
 
 import { AppDataSource } from "../../../../data-source";
 import { ICreateDegreeDTO } from "../../dtos/ICreateDegreeDTO";
-import { ICreateSchoolDTO } from "../../dtos/ICreateSchoolDTO";
 import { Degree } from "../../entities/Degree";
 import { IDegreeRepository } from "../IDegreeRepository";
 
@@ -12,10 +11,10 @@ export class DegreeRepository implements IDegreeRepository {
         this.degreRepository = AppDataSource.getRepository(Degree);
     }
 
-    async create(school: ICreateSchoolDTO): Promise<Degree> {
-        const newSchool = this.degreRepository.create(school);
-        const createSchool = await this.degreRepository.save(newSchool);
-        return createSchool;
+    async create(degree: ICreateDegreeDTO): Promise<Degree> {
+        const newDegree = this.degreRepository.create(degree);
+        const createDegree = await this.degreRepository.save(newDegree);
+        return createDegree;
     }
 
     async list(): Promise<Degree[]> {
@@ -29,7 +28,7 @@ export class DegreeRepository implements IDegreeRepository {
         return school;
     }
     async findByName(name: string): Promise<Degree | undefined> {
-        const school = await this.degreRepository.findOneBy({ name });
-        return school;
+        const degree = await this.degreRepository.findOneBy({ name });
+        return degree;
     }
 }

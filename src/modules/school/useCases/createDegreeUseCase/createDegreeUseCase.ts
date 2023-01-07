@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
 
-import { ICreateSchoolDTO } from "../../dtos/ICreateSchoolDTO";
+import { ICreateDegreeDTO } from "../../dtos/ICreateDegreeDTO";
 import { Degree } from "../../entities/Degree";
 import { IDegreeRepository } from "../../repositories/IDegreeRepository";
 
@@ -13,7 +13,7 @@ export class CreateDegreeUseCase {
         @inject("DegreeRepository")
         private degreeRepository: IDegreeRepository
     ) {}
-    async execute({ name }: ICreateSchoolDTO): Promise<IResponse> {
+    async execute({ name }: ICreateDegreeDTO): Promise<IResponse> {
         const degree = await this.degreeRepository.create({
             name,
         });

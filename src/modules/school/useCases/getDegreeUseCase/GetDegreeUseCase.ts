@@ -14,6 +14,5 @@ export class GetDegreeUseCase {
         if (degrees) {
             return degrees;
         }
-        return [];
     }
 }
