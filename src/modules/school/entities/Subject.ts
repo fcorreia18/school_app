@@ -28,7 +28,8 @@ export class Subject {
     updated_at: Date;
 
     course_id: string;
-    @ManyToOne(() => Course, (course) => course.subjects)
+
+    @ManyToMany(() => Course, (course) => course.subjects)
     @JoinColumn({ name: "course_id" })
     courses: Course[];
 
