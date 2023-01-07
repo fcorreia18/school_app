@@ -30,7 +30,6 @@ export class Subject {
     course_id: string;
 
     @ManyToMany(() => Course, (course) => course.subjects)
-    @JoinColumn({ name: "course_id" })
     courses: Course[];
 
     constructor() {
