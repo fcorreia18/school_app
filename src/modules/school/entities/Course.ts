@@ -35,7 +35,9 @@ export class Course {
     @UpdateDateColumn()
     updated_at: Date;
 
-    @ManyToOne(() => Degree, (degree) => degree.courses)
+    @ManyToOne(() => Degree, (degree) => degree.courses, {
+        cascade: ["insert", "update"],
+    })
     degree: Degree;
 
     @ManyToMany(() => School, (school) => school.courses)
