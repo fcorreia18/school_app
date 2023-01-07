@@ -6,14 +6,14 @@ import { Degree } from "../../entities/Degree";
 import { IDegreeRepository } from "../IDegreeRepository";
 
 export class DegreeRepository implements IDegreeRepository {
-    degreRepository: Repository<Degree>;
+    degreeRepository: Repository<Degree>;
     constructor() {
-        this.degreRepository = AppDataSource.getRepository(Degree);
+        this.degreeRepository = AppDataSource.getRepository(Degree);
     }
 
     async create(degree: ICreateDegreeDTO): Promise<Degree> {
-        const newDegree = this.degreRepository.create(degree);
-        const createDegree = await this.degreRepository.save(newDegree);
+        const newDegree = this.degreeRepository.create(degree);
+        const createDegree = await this.degreeRepository.save(newDegree);
         return createDegree;
     }
 
@@ -22,11 +22,11 @@ export class DegreeRepository implements IDegreeRepository {
         return degrees;
     }
     async findById(id: string): Promise<Degree | undefined> {
-        const school = await this.degreRepository.findOneBy({ id });
+        const school = await this.degreeRepository.findOneBy({ id });
         return school;
     }
     async findByName(name: string): Promise<Degree | undefined> {
-        const degree = await this.degreRepository.findOneBy({ name });
+        const degree = await this.degreeRepository.findOneBy({ name });
         return degree;
     }
 }

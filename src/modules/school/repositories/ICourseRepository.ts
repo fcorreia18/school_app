@@ -1,8 +1,8 @@
 import { ICreateDegreeDTO } from "../dtos/ICreateDegreeDTO";
-import { Degree } from "../entities/Degree";
+import { Course } from "../entities/Course";
 import { IGenericRepository } from "./IGenericRepository";
 
-export interface IDegreeRepository
-    extends IGenericRepository<Degree, ICreateDegreeDTO> {
-    findByName(name: string): Promise<Degree>;
+export interface ICourseRepository
+    extends IGenericRepository<Course, ICreateDegreeDTO> {
+    findByName(name: string): Promise<Course>;
 }
