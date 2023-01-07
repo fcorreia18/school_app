@@ -26,6 +26,9 @@ export class School {
     @Column()
     province: string;
 
+    @Column()
+    county: string;
+
     @Column({ type: "decimal", precision: 10, scale: 2, default: 0 })
     latitude: number;
 

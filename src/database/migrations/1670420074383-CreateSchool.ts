@@ -26,6 +26,10 @@ export class CreateSchool1670420074383 implements MigrationInterface {
                         type: "varchar",
                     },
                     {
+                        name: "county",
+                        type: "varchar",
+                    },
+                    {
                         name: "longitude",
                         type: "decimal",
                         scale: 10,
