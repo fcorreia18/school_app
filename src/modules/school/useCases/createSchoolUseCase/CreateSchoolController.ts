@@ -9,9 +9,9 @@ export class CreateSchoolController {
         const {
             name,
             province,
+            county,
             latitude,
             longitude,
-            degree,
             about,
             open_on_weekends,
             opening_hours,
@@ -22,9 +22,9 @@ export class CreateSchoolController {
         const school = await createSchoolUseCase.execute({
             name,
             province,
+            county,
             latitude,
             longitude,
-            degree,
             about,
             open_on_weekends,
             opening_hours,

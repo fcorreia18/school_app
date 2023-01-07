@@ -39,9 +39,6 @@ export class School {
     about: string;
 
     @Column()
-    degree: string;
-
-    @Column()
     opening_hours: string;
 
     @Column()

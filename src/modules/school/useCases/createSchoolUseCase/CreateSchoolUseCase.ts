@@ -16,9 +16,9 @@ export class CreateSchoolUseCase {
     async execute({
         name,
         province,
+        county,
         latitude,
         longitude,
-        degree,
         about,
         open_on_weekends,
         opening_hours,
@@ -27,9 +27,9 @@ export class CreateSchoolUseCase {
         const school = await this.schoolRepository.create({
             name,
             province,
+            county,
             latitude,
             longitude,
-            degree,
             about,
             open_on_weekends,
             opening_hours,
