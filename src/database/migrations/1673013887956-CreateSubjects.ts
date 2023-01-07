@@ -16,6 +16,18 @@ export class CreateSubjects1673013887956 implements MigrationInterface {
                         name: "name",
                         type: "varchar",
                     },
+                    {
+                        name: "courses_id",
+                        type: "uuid",
+                    },
+                ],
+                foreignKeys: [
+                    {
+                        name: "Courses",
+                        referencedTableName: "courses",
+                        referencedColumnNames: ["id"],
+                        columnNames: ["courses_id"],
+                    },
                 ],
             })
         );
