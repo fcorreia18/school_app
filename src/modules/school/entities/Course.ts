@@ -42,8 +42,10 @@ export class Course {
     @JoinTable({ name: "school_courses" })
     schools: School[];
 
-    @ManyToMany(() => Subject, (subject) => subject.courses)
-    @JoinTable()
+    @OneToMany(() => Subject, (subject) => subject.courses, {
+        cascade: ["insert", "update"],
+    })
+    @JoinColumn({ name: "course_id" })
     subjects: Subject[];
 
     constructor() {

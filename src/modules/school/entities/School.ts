@@ -57,7 +57,6 @@ export class School {
     images: Image[];
 
     @ManyToMany(() => Course, (course) => course.schools)
-    @JoinTable()
     courses: Course[];
 
     constructor() {

@@ -28,23 +28,10 @@ export class Subject {
     updated_at: Date;
 
     course_id: string;
-
-    @ManyToMany(() => Course, (course) => course.subjects)
+    @ManyToOne(() => Course, (course) => course.subjects)
     @JoinColumn({ name: "course_id" })
     courses: Course[];
-    // @PrimaryColumn({ type: "int" })
-    // skills_id: number;
 
-    // @PrimaryColumn({ type: "int" })
-    // heros_id: number;
-
-    // @OneToOne(() => Hero)
-    // @JoinTable()
-    // hero: Hero;
-
-    // @OneToOne(() => Skill)
-    // @JoinTable()
-    // skill: Skill;
     constructor() {
         if (!this.id) {
             this.id = uuidV4();
