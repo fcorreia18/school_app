@@ -1,4 +1,10 @@
-import { Entity, JoinTable, OneToOne, PrimaryColumn } from "typeorm";
+import {
+    Entity,
+    JoinColumn,
+    JoinTable,
+    OneToOne,
+    PrimaryColumn,
+} from "typeorm";
 
 import { Course } from "./Course";
 import { School } from "./School";
@@ -12,10 +18,10 @@ export class SchoolCourse {
     courses_id: string;
 
     @OneToOne(() => School)
-    @JoinTable()
+    @JoinColumn([{ name: "schools_id", referencedColumnName: "id" }])
     school: School;
 
     @OneToOne(() => Course)
-    @JoinTable()
+    @JoinColumn([{ name: "courses_id", referencedColumnName: "id" }])
     course: Course;
 }

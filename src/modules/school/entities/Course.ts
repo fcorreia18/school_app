@@ -35,13 +35,23 @@ export class Course {
     @UpdateDateColumn()
     updated_at: Date;
 
-    @ManyToOne(() => Degree, (degree) => degree.courses, {
-        cascade: ["insert", "update"],
-    })
+    @ManyToOne(() => Degree, (degree) => degree.courses)
+    @JoinColumn({ name: "degree_id" })
     degree: Degree;
 
     @ManyToMany(() => School, (school) => school.courses)
     @JoinTable({ name: "school_courses" })
+    @JoinTable({
+        name: "school_courses",
+        joinColumn: {
+            name: "courses_id",
+            referencedColumnName: "id",
+        },
+        inverseJoinColumn: {
+            name: "schools_id",
+            referencedColumnName: "id",
+        },
+    })
     schools: School[];
 
     @ManyToMany(() => Subject, (subject) => subject.courses)

@@ -19,7 +19,10 @@ export class SchoolRepository implements ISchoolRepository {
 
     async list(): Promise<School[]> {
         const schools = await AppDataSource.manager.find(School, {
-            relations: { images: true },
+            relations: {
+                images: true,
+                courses: true,
+            },
         });
         return schools;
     }

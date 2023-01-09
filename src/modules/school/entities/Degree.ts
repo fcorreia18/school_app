@@ -26,7 +26,9 @@ export class Degree {
     @UpdateDateColumn()
     updated_at: Date;
 
-    @OneToMany(() => Course, (course) => course.degree)
+    @OneToMany(() => Course, (course) => course.degree, {
+        cascade: ["insert", "update"],
+    })
     @JoinColumn({ name: "degree_id" })
     courses: Course[];
 
