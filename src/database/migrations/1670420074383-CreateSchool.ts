@@ -14,6 +14,10 @@ export class CreateSchool1670420074383 implements MigrationInterface {
                         isGenerated: true,
                     },
                     {
+                        name: "course_id",
+                        type: "uuid",
+                    },
+                    {
                         name: "name",
                         type: "varchar",
                     },
@@ -63,6 +67,14 @@ export class CreateSchool1670420074383 implements MigrationInterface {
                         name: "updated_at",
                         type: "timestamp",
                         default: "now()",
+                    },
+                ],
+                foreignKeys: [
+                    {
+                        name: "Course",
+                        referencedTableName: "courses",
+                        referencedColumnNames: ["id"],
+                        columnNames: ["course_id"],
                     },
                 ],
             })

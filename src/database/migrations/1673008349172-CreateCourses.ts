@@ -25,10 +25,6 @@ export class CreateCourses1673008349172 implements MigrationInterface {
                         type: "uuid",
                     },
                     {
-                        name: "schools_id",
-                        type: "uuid",
-                    },
-                    {
                         name: "created_at",
                         type: "timestamp",
                         default: "now()",
@@ -45,12 +41,6 @@ export class CreateCourses1673008349172 implements MigrationInterface {
                         columnNames: ["degree_id"],
                         referencedTableName: "degrees",
                         referencedColumnNames: ["id"],
-                    },
-                    {
-                        name: "Schools",
-                        referencedTableName: "schools",
-                        referencedColumnNames: ["id"],
-                        columnNames: ["schools_id"],
                     },
                 ],
             })

@@ -9,19 +9,19 @@ export class CreateCourseController {
     async handle(req: Request, res: Response): Promise<Response> {
         const createCourseUseCase = container.resolve(CreateCourseUseCase);
         const { name, duration, degree } = req.body;
-        const verifyDegree = await AppDataSource.manager.find(Degree, {
-            where: {
-                name: degree,
-            },
-        });
-        if (!verifyDegree) {
-            const course = await createCourseUseCase.execute({
-                name,
-                duration,
-                degree,
-            });
-            return res.status(201).json(course);
-        }
+        // const verifyDegree = await AppDataSource.manager.find(Degree, {
+        //     where: {
+        //         name: degree,
+        //     },
+        // });
+        // if (!verifyDegree) {
+        //     const course = await createCourseUseCase.execute({
+        //         name,
+        //         duration,
+        //         degree,
+        //     });
+        //     return res.status(201).json(course);
+        // }
         const course = await createCourseUseCase.execute({
             name,
             duration,

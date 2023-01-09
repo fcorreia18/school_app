@@ -3,6 +3,7 @@ import { Repository } from "typeorm";
 import { AppDataSource } from "../../../../data-source";
 import { ICreateCourseDTO } from "../../dtos/ICreateCourseDTO";
 import { Course } from "../../entities/Course";
+import { Degree } from "../../entities/Degree";
 import { SchoolCourse } from "../../entities/SchoolCourse";
 import { ICourseRepository } from "../ICourseRepository";
 
@@ -12,9 +13,36 @@ export class CourseRepository implements ICourseRepository {
         this.courseRepository = AppDataSource.getRepository(Course);
     }
 
-    async create(Course: ICreateCourseDTO): Promise<Course> {
-        const newCoursee = this.courseRepository.create(Course);
-        const createCoursee = await this.courseRepository.save(newCoursee);
+    async create({
+        name,
+        duration,
+        degree: { name: degreeName },
+    }: ICreateCourseDTO): Promise<Course> {
+        const [verifyDegree] = await AppDataSource.manager.find(Degree, {
+            where: {
+                name: degreeName,
+            },
+        });
+        const degreeRepository = AppDataSource.getRepository(Degree);
+        if (!verifyDegree) {
+            const degree = degreeRepository.create({ name: degreeName });
+            await degreeRepository.save(degree);
+        }
+        const existingDegree = await degreeRepository.save(verifyDegree);
+        const newCourse = this.courseRepository.create({
+            name,
+            duration,
+        });
+        newCourse.degree = verifyDegree;
+        console.log(
+            verifyDegree,
+            "existing:",
+            existingDegree,
+            "novo curso",
+            newCourse
+        );
+        const createCoursee = await this.courseRepository.save(newCourse);
+
         return createCoursee;
     }
 
