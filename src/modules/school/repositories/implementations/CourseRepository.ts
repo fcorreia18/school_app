@@ -55,7 +55,7 @@ export class CourseRepository implements ICourseRepository {
         const courses = await AppDataSource.manager.find(Course, {
             relations: {
                 degree: true,
-                // schools: true,
+                schools: true,
             },
         }); // , {relations: { courses: true },}
         // console.log(schoolsCourses);

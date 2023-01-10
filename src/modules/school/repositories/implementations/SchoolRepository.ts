@@ -45,32 +45,33 @@ export class SchoolRepository implements ISchoolRepository {
         return school;
     }
 
-    async genericFind({ province, degree, course }): Promise<{
+    async genericFind({
+        province,
+        degree,
+        course,
+    }: {
+        province: string;
+        degree: string;
+        course: string;
+    }): Promise<{
         degrees?: Degree[];
         schools?: School[];
     } | void> {
         const degrees = await AppDataSource.manager.find(Degree, {
             where: {
                 name: degree,
+                courses: { name: course, schools: { province } },
             },
             relations: {
-                courses: true,
-                // courses: true,
+                courses: {
+                    schools: true,
+                },
             },
         });
-        const result = await AppDataSource.manager.find(School, {
-            where: {
-                province,
-            },
-            relations: {
-                images: true,
-                // courses: true,
-            },
-        });
-        if (degrees && result) {
+
+        if (degrees) {
             return {
                 degrees,
-                schools: result,
             };
         }
         // eslint-disable-next-line consistent-return, no-useless-return
