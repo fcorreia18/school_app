@@ -1,7 +1,7 @@
 import { Router } from "express";
 
 import { ensureAuthenticated } from "../middlewares/ensureAuthentication";
-import { CreateDegreeController } from "../modules/school/useCases/createDegreeUseCase/CreateDegreeController";
+import { CreateDegreeController } from "../modules/school/useCases/createDegreeUseCase/createDegreeController";
 import { GetDegreeController } from "../modules/school/useCases/getDegreeUseCase/GetDegreeController";
 
 const degreeRoutes = Router();

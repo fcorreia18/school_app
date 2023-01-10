@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
+import { CreateDegreeUseCase } from "./createDegreeUseCase";
 
-import { CreateDegreeUseCase } from "./CreateDegreeUseCase";
 
 export class CreateDegreeController {
     async handle(req: Request, res: Response): Promise<Response> {
