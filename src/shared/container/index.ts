@@ -6,7 +6,9 @@ import { ICourseRepository } from "../../modules/school/repositories/ICourseRepo
 import { IDegreeRepository } from "../../modules/school/repositories/IDegreeRepository";
 import { CourseRepository } from "../../modules/school/repositories/implementations/CourseRepository";
 import { DegreeRepository } from "../../modules/school/repositories/implementations/DegreeRepository";
+import { SchoolCourseRepository } from "../../modules/school/repositories/implementations/SchoolCourseRepository";
 import { SchoolRepository } from "../../modules/school/repositories/implementations/SchoolRepository";
+import { ISchoolCourseRepository } from "../../modules/school/repositories/ISchoolCourseRepository";
 import { ISchoolRepository } from "../../modules/school/repositories/ISchoolRepository";
 
 container.registerSingleton<IUsersRepository>(
@@ -27,4 +29,9 @@ container.registerSingleton<IDegreeRepository>(
 container.registerSingleton<ICourseRepository>(
     "CourseRepository",
     CourseRepository
+);
+
+container.registerSingleton<ISchoolCourseRepository>(
+    "SchoolCourseRepository",
+    SchoolCourseRepository
 );

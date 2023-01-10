@@ -1,25 +1,29 @@
 import { inject, injectable } from "tsyringe";
 
-import { ICreateSchoolDTO } from "../../dtos/ICreateSchoolDTO";
-import { School } from "../../entities/School";
-import { ISchoolRepository } from "../../repositories/ISchoolRepository";
+import { ICreateSchoolCourseDTO } from "../../dtos/ICreateSchoolCourseDTO";
+import { SchoolCourse } from "../../entities/SchoolCourse";
+import { ISchoolCourseRepository } from "../../repositories/ISchoolCourseRepository";
 
 interface IResponse {
-    school: School;
+    schoolCourses: SchoolCourse[];
 }
 @injectable()
 export class CreateSchoolCourseUseCase {
     constructor(
-        @inject("SchoolRepository")
-        private schoolRepository: ISchoolRepository
+        @inject("SchoolCourseRepository")
+        private schoolCourseRepository: ISchoolCourseRepository
     ) {}
-    async execute({ name, province }: ICreateSchoolDTO): Promise<IResponse> {
-        const school = await this.schoolRepository.create({
-            name,
-            province,
-        });
+    async execute({
+        schools,
+        courses,
+    }: ICreateSchoolCourseDTO): Promise<IResponse> {
+        const schoolCourses =
+            await this.schoolCourseRepository.createSchoolCourse({
+                schools,
+                courses,
+            });
         const res: IResponse = {
-            school,
+            schoolCourses,
         };
         return res;
     }

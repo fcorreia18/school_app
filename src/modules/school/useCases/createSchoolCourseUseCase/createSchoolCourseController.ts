@@ -1,20 +1,19 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 
-import { CreateCourseUseCase } from "../createCourseUseCase/CreateCourseUseCase";
+import { CreateSchoolCourseUseCase } from "./CreateSchoolCourseUseCase";
 
 export class CreateSchoolCourseController {
     async handle(req: Request, res: Response): Promise<Response> {
-        const createSchoolCourseUseCase =
-            container.resolve(CreateCourseUseCase);
-        const { name, province } = req.body;
-        const requestImages = req.files as Express.Multer.File[];
-        const images = requestImages.map((image) => ({ path: image.filename }));
+        const createSchoolCourseUseCase = container.resolve(
+            CreateSchoolCourseUseCase
+        );
+        const { school: schools, courses } = req.body;
 
-        const school = await createSchoolCourseUseCase.execute({
-            name,
-            province,
+        const schoolCourses = await createSchoolCourseUseCase.execute({
+            schools,
+            courses,
         });
-        return res.status(201).json(school);
+        return res.status(201).json(schoolCourses);
     }
 }
