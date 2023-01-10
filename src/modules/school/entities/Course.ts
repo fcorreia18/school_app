@@ -40,7 +40,6 @@ export class Course {
     degree: Degree;
 
     @ManyToMany(() => School, (school) => school.courses)
-    @JoinTable({ name: "school_courses" })
     @JoinTable({
         name: "school_courses",
         joinColumn: {

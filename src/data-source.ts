@@ -3,8 +3,8 @@ import { DataSource } from "typeorm";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const remotePostgresDataSource = new DataSource({
     type: "postgres",
-    // url: "postgresql://postgres:YRycfuMzCKiKC8gX@db.nddaeuebmqjyqwdwcylk.supabase.co:5432/postgres",
-    url: "postgresql://postgres:hICGIMZilyBYJWuM@db.wjodjswssezcujmuwqwm.supabase.co:5432/postgres",
+    url: "postgresql://postgres:wIHk3VJbuTsZoWY8@db.lwzxkuswkejydxyuhoxc.supabase.co:5432/postgres",
+    // url: "postgresql://postgres:hICGIMZilyBYJWuM@db.wjodjswssezcujmuwqwm.supabase.co:5432/postgres",
     entities: [`${__dirname}/modules/**/entities/*.ts`],
     migrations: ["./src/database/migrations/*.ts"],
 });
@@ -18,7 +18,7 @@ const localPostgresDataSource = new DataSource({
     entities: [`./src/modules/**/entities/*.ts`],
     migrations: ["./src/database/migrations/*.ts"],
 });
-export const AppDataSource = localPostgresDataSource;
+export const AppDataSource = remotePostgresDataSource;
 
 AppDataSource.initialize()
     .then(async () => {

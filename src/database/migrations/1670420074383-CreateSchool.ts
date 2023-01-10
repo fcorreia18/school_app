@@ -13,10 +13,10 @@ export class CreateSchool1670420074383 implements MigrationInterface {
                         isPrimary: true,
                         isGenerated: true,
                     },
-                    {
-                        name: "course_id",
-                        type: "uuid",
-                    },
+                    // {
+                    //     name: "course_id",
+                    //     type: "uuid",
+                    // },
                     {
                         name: "name",
                         type: "varchar",
@@ -35,15 +35,11 @@ export class CreateSchool1670420074383 implements MigrationInterface {
                     },
                     {
                         name: "longitude",
-                        type: "decimal",
-                        scale: 10,
-                        precision: 2,
+                        type: "float8",
                     },
                     {
                         name: "latitude",
-                        type: "decimal",
-                        scale: 10,
-                        precision: 2,
+                        type: "float8",
                     },
                     {
                         name: "about",
@@ -69,14 +65,14 @@ export class CreateSchool1670420074383 implements MigrationInterface {
                         default: "now()",
                     },
                 ],
-                foreignKeys: [
-                    {
-                        name: "Course",
-                        referencedTableName: "courses",
-                        referencedColumnNames: ["id"],
-                        columnNames: ["course_id"],
-                    },
-                ],
+                // foreignKeys: [
+                //     {
+                //         name: "Course",
+                //         referencedTableName: "courses",
+                //         referencedColumnNames: ["id"],
+                //         columnNames: ["course_id"],
+                //     },
+                // ],
             })
         );
     }
