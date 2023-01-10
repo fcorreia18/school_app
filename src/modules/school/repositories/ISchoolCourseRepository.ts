@@ -13,5 +13,9 @@ interface IResponse {
 }
 export interface ISchoolCourseRepository
     extends IGenericRepository<SchoolCourse, ICreateSchoolCourseDTO> {
+    createSchoolCourse({
+        schools,
+        courses,
+    }: ICreateSchoolCourseDTO): Promise<SchoolCourse[]>;
     genericFind?(params: IRequest): Promise<IResponse | void>;
 }
