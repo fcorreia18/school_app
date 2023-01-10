@@ -6,7 +6,6 @@
     "scripts": {
         "dev": "ts-node-dev --poll --respawn --inspect --transpile-only --ignore-watch node_modules  src/server.ts",
         "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
-        "prod": "tsc && ts-node-dev build/server.js",
         "start:build": "tsc -w",
         "start:run": "ts-node-dev build/server.js",
         "start": "concurrently npm:start:*"
