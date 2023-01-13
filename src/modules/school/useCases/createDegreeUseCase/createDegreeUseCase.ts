@@ -1,7 +1,6 @@
 import { inject, injectable } from "tsyringe";
 
 import { ICreateDegreeDTO } from "../../dtos/ICreateDegreeDTO";
-import { Course } from "../../entities/Course";
 import { Degree } from "../../entities/Degree";
 import { IDegreeRepository } from "../../repositories/IDegreeRepository";
 

@@ -1,11 +1,17 @@
+import path from "path";
 import { DataSource } from "typeorm";
-
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const remotePostgresDataSource = new DataSource({
     type: "postgres",
     url: "postgresql://postgres:wIHk3VJbuTsZoWY8@db.lwzxkuswkejydxyuhoxc.supabase.co:5432/postgres",
     // url: "postgresql://postgres:hICGIMZilyBYJWuM@db.wjodjswssezcujmuwqwm.supabase.co:5432/postgres",
-    entities: [`${__dirname}/modules/**/entities/*.ts`],
+    entities: [
+        `${
+            path.extname(path.basename(__filename)) === ".ts"
+                ? `${__dirname}/modules/**/entities/*.ts`
+                : `./build/modules/**/entities/*.js`
+        }`,
+    ],
     migrations: ["./src/database/migrations/*.ts"],
 });
 
@@ -15,7 +21,13 @@ const localPostgresDataSource = new DataSource({
     database: "school_app",
     username: "docker",
     password: "school_app",
-    entities: [`./src/modules/**/entities/*.ts`],
+    entities: [
+        `${
+            path.extname(path.basename(__filename)) === ".ts"
+                ? `./src/modules/**/entities/*.ts`
+                : `./build/modules/**/entities/*.js`
+        }`,
+    ],
     migrations: ["./src/database/migrations/*.ts"],
 });
 export const AppDataSource = remotePostgresDataSource;
