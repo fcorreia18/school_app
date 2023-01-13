@@ -31,7 +31,7 @@ export class SchoolRepository implements ISchoolRepository {
         const school = await this.schoolRepository.findOneBy({ id });
         return school;
     }
-    async findByName({ name }: ICreateSchoolDTO): Promise<School | undefined> {
+    async findByName(name: string): Promise<School | undefined> {
         const school = await this.schoolRepository.findOneBy({ name });
         return school;
     }

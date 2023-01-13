@@ -29,6 +29,12 @@ export class School {
     @Column()
     county: string;
 
+    @Column()
+    contact: number;
+
+    @Column()
+    acronym: string;
+
     @Column({ type: "decimal", precision: 10, scale: 2, default: 0 })
     latitude: number;
 

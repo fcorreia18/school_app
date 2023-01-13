@@ -4,5 +4,5 @@ import { IGenericRepository } from "./IGenericRepository";
 
 export interface IDegreeRepository
     extends IGenericRepository<Degree, ICreateDegreeDTO> {
-    findByName(name: string): Promise<Degree>;
+    findByName(name: string): Promise<Degree | void>;
 }

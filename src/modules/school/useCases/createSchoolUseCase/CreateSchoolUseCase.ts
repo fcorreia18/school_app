@@ -1,5 +1,6 @@
 import { inject, injectable } from "tsyringe";
 
+import { AppError } from "../../../../errors/AppError";
 import { ICreateSchoolDTO } from "../../dtos/ICreateSchoolDTO";
 import { School } from "../../entities/School";
 import { ISchoolRepository } from "../../repositories/ISchoolRepository";
@@ -17,6 +18,8 @@ export class CreateSchoolUseCase {
         name,
         province,
         county,
+        contact,
+        acronym,
         latitude,
         longitude,
         about,
@@ -24,10 +27,16 @@ export class CreateSchoolUseCase {
         opening_hours,
         images,
     }: ICreateSchoolDTO): Promise<IResponse> {
+        const schoolAlreadyExist = await this.schoolRepository.findByName(name);
+        if (schoolAlreadyExist) {
+            throw new AppError("School Already Exist");
+        }
         const school = await this.schoolRepository.create({
             name,
             province,
             county,
+            contact,
+            acronym,
             latitude,
             longitude,
             about,

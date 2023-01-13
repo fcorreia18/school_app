@@ -19,6 +19,6 @@ export interface ISchoolRepository
         latitude,
         longitude,
     }: ICreateSchoolDTO): Promise<School[] | void>;
-    findByName({ name }: ICreateSchoolDTO): Promise<School | void>;
+    findByName(name: string): Promise<School | void>;
     genericFind(params: IRequest): Promise<IResponse | void>;
 }

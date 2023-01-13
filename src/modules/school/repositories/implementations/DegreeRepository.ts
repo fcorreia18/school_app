@@ -23,11 +23,11 @@ export class DegreeRepository implements IDegreeRepository {
         }); // , {relations: { courses: true },}
         return degrees;
     }
-    async findById(id: string): Promise<Degree | undefined> {
+    async findById(id: string): Promise<Degree | void> {
         const school = await this.degreeRepository.findOneBy({ id });
         return school;
     }
-    async findByName(name: string): Promise<Degree | undefined> {
+    async findByName(name: string): Promise<Degree | void> {
         const degree = await this.degreeRepository.findOneBy({ name });
         return degree;
     }
