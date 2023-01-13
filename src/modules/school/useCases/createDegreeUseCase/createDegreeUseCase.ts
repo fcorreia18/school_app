@@ -1,5 +1,6 @@
 import { inject, injectable } from "tsyringe";
 
+import { AppError } from "../../../../errors/AppError";
 import { ICreateDegreeDTO } from "../../dtos/ICreateDegreeDTO";
 import { Degree } from "../../entities/Degree";
 import { IDegreeRepository } from "../../repositories/IDegreeRepository";
@@ -14,6 +15,13 @@ export class CreateDegreeUseCase {
         private degreeRepository: IDegreeRepository
     ) {}
     async execute({ name, courses }: ICreateDegreeDTO): Promise<IResponse> {
+        const degreeAlreadyExist = await this.degreeRepository.findByName(
+            name.toLocaleLowerCase()
+        );
+
+        if (degreeAlreadyExist) {
+            throw new AppError("Degree Already Exists");
+        }
         const degree = await this.degreeRepository.create({
             name,
             courses,
