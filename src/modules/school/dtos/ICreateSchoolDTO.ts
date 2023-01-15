@@ -10,6 +10,7 @@ export interface ICreateSchoolDTO {
     about?: string;
     opening_hours?: string;
     open_on_weekends?: boolean;
+    website?: string;
     images?: {
         path: string;
     }[];

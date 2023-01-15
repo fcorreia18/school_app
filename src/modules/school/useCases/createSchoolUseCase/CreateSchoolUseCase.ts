@@ -25,6 +25,7 @@ export class CreateSchoolUseCase {
         about,
         open_on_weekends,
         opening_hours,
+        website,
         images,
     }: ICreateSchoolDTO): Promise<IResponse> {
         const schoolAlreadyExist = await this.schoolRepository.findByName(name);
@@ -42,6 +43,7 @@ export class CreateSchoolUseCase {
             about,
             open_on_weekends,
             opening_hours,
+            website,
             images,
         });
         const res: IResponse = {

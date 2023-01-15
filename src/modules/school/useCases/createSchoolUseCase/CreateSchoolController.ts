@@ -17,6 +17,7 @@ export class CreateSchoolController {
             about,
             open_on_weekends,
             opening_hours,
+            website,
         } = req.body;
         const requestImages = req.files as Express.Multer.File[];
         const images = requestImages.map((image) => ({ path: image.filename }));
@@ -32,6 +33,7 @@ export class CreateSchoolController {
             about,
             open_on_weekends,
             opening_hours,
+            website,
             images,
         });
         return res.status(201).json(school);

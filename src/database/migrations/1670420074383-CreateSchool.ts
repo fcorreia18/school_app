@@ -55,6 +55,11 @@ export class CreateSchool1670420074383 implements MigrationInterface {
                         default: false,
                     },
                     {
+                        name: "website",
+                        type: "varchar",
+                        isNullable: true,
+                    },
+                    {
                         name: "created_at",
                         type: "timestamp",
                         default: "now()",
