@@ -11,6 +11,6 @@ const getDegreeController = new GetDegreeController();
 const updateDegreeController = new UpdateDegreeController();
 degreeRoutes.post("/", ensureAuthenticated, createDegreeController.handle);
 degreeRoutes.get("/", getDegreeController.handle);
-degreeRoutes.put("/:id", updateDegreeController.handle);
+degreeRoutes.put("/:id", ensureAuthenticated, updateDegreeController.handle);
 
 export { degreeRoutes };
