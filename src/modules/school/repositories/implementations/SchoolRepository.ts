@@ -27,6 +27,10 @@ export class SchoolRepository implements ISchoolRepository {
         });
         return schools;
     }
+    async update(school: School): Promise<School> {
+        const updateSchool = await this.schoolRepository.save(school);
+        return updateSchool;
+    }
     async findById(id: string): Promise<School | undefined> {
         const school = await this.schoolRepository.findOneBy({ id });
         return school;
