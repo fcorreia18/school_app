@@ -85,6 +85,8 @@ export class SchoolRepository implements ISchoolRepository {
         degrees?: Degree[];
         schools?: School[];
     } | void> {
+        console.log(province, degree, course);
+
         const degrees = await AppDataSource.manager.find(Degree, {
             where: {
                 name: degree,

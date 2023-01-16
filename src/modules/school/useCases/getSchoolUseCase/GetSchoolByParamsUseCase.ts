@@ -14,6 +14,8 @@ export class GetSchoolByParamsUseCase {
         degrees?: Degree[];
         schools?: School[];
     }> {
+        // console.log(province, degree, course);
+
         const result = await this.schoolRepository.genericFind({
             province,
             degree,

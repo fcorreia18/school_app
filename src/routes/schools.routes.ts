@@ -27,6 +27,9 @@ schoolRoutes.put(
     updateSchoolController.handle
 );
 schoolRoutes.get("/", getSchoolsController.handle);
-schoolRoutes.get("/filter", getSchoolsByParamsController.handle);
+schoolRoutes.get(
+    "/filter/:province/:degree/:course",
+    getSchoolsByParamsController.handle
+);
 
 export { schoolRoutes };
