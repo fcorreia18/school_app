@@ -6,7 +6,7 @@ import { Degree } from "../../entities/Degree";
 import { IDegreeRepository } from "../../repositories/IDegreeRepository";
 
 interface IResponse {
-    degree: Degree;
+    degree: Degree | void;
 }
 @injectable()
 export class UpdateDegreeUseCase {
