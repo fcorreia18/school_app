@@ -27,9 +27,33 @@ export class SchoolRepository implements ISchoolRepository {
         });
         return schools;
     }
-    async update(school: School): Promise<School> {
-        const updateSchool = await this.schoolRepository.save(school);
-        return updateSchool;
+    async update({
+        id,
+        name,
+        province,
+        county,
+        contact,
+        acronym,
+        latitude,
+        longitude,
+        about,
+        open_on_weekends,
+        opening_hours,
+        website,
+    }: School): Promise<void> {
+        await this.schoolRepository.update(id, {
+            name,
+            province,
+            county,
+            contact,
+            acronym,
+            latitude,
+            longitude,
+            about,
+            open_on_weekends,
+            opening_hours,
+            website,
+        });
     }
     async findById(id: string): Promise<School | undefined> {
         const school = await this.schoolRepository.findOneBy({ id });

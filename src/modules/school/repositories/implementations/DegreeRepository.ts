@@ -16,7 +16,7 @@ export class DegreeRepository implements IDegreeRepository {
         const createDegree = await this.degreeRepository.save(newDegree);
         return createDegree;
     }
-    async update(degree: Degree): Promise<Degree> {
+    async update(degree: Degree): Promise<Degree | void> {
         const updateDegree = await this.degreeRepository.save(degree);
         return updateDegree;
     }

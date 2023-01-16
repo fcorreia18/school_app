@@ -20,7 +20,7 @@ schoolRoutes.post(
     upload.array("images"),
     createSchoolController.handle
 );
-schoolRoutes.post(
+schoolRoutes.put(
     "/:id",
     ensureAuthenticated,
     upload.array("images"),

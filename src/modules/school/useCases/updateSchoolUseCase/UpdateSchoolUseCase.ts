@@ -6,7 +6,7 @@ import { School } from "../../entities/School";
 import { ISchoolRepository } from "../../repositories/ISchoolRepository";
 
 interface IResponse {
-    school: School;
+    school: School | void;
 }
 @injectable()
 export class UpdateSchoolUseCase {
