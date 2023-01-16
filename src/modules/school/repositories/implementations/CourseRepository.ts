@@ -45,6 +45,10 @@ export class CourseRepository implements ICourseRepository {
 
         return createCoursee;
     }
+    async update(course: Course): Promise<Course | void> {
+        const updateCourse = await this.courseRepository.save(course);
+        return updateCourse;
+    }
 
     async list(): Promise<Course[]> {
         // const schoolsCourses = await AppDataSource.manager.find(SchoolCourse, {
