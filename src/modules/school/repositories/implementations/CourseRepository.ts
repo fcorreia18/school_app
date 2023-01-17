@@ -16,31 +16,28 @@ export class CourseRepository implements ICourseRepository {
     async create({
         name,
         duration,
-        degree: { name: degreeName },
+        degree,
     }: ICreateCourseDTO): Promise<Course> {
-        const [verifyDegree] = await AppDataSource.manager.find(Degree, {
+        const degreeRepository = AppDataSource.getRepository(Degree);
+
+        const verifyDegree = await degreeRepository.findOne({
             where: {
-                name: degreeName,
+                name: degree.name,
             },
         });
-        const degreeRepository = AppDataSource.getRepository(Degree);
+
         if (!verifyDegree) {
-            const degree = degreeRepository.create({ name: degreeName });
-            await degreeRepository.save(degree);
+            const newDegree = degreeRepository.create({ name: degree.name });
+            await degreeRepository.save(newDegree);
         }
         const existingDegree = await degreeRepository.save(verifyDegree);
         const newCourse = this.courseRepository.create({
             name,
             duration,
         });
-        newCourse.degree = verifyDegree;
-        console.log(
-            verifyDegree,
-            "existing:",
-            existingDegree,
-            "novo curso",
-            newCourse
-        );
+        newCourse.degree = existingDegree;
+        console.log(verifyDegree, "novo curso", newCourse);
+
         const createCoursee = await this.courseRepository.save(newCourse);
 
         return createCoursee;

@@ -88,11 +88,13 @@ export class SchoolRepository implements ISchoolRepository {
     } | void> {
         const degreeRepository = AppDataSource.manager.getRepository(Degree);
 
-        const degreeQuery = await degreeRepository
+        const degreeQuery = degreeRepository
             .createQueryBuilder("d")
             .where("d.name = :degree", { degree });
 
         if (course) {
+            const slug = course.replace("-", " ");
+
             const findDegree = await degreeQuery.getOne();
             degreeQuery
                 .relation(Degree, "courses")
@@ -101,35 +103,36 @@ export class SchoolRepository implements ISchoolRepository {
                 .then((data) => {
                     console.log(data);
                 });
+            const degrees = await AppDataSource.manager.find(Degree, {
+                where: {
+                    name: degree,
+                    courses: { name: slug, schools: { province } },
+                },
+                relations: {
+                    courses: {
+                        schools: true,
+                    },
+                },
+            });
+
+            if (degrees) {
+                // const courses = degrees.map((degree) => degree.courses);
+                return {
+                    degrees,
+                };
+            }
+        } else {
+            /* empty */
+            const degreeResult = await degreeQuery.getMany();
+            console.log(degreeResult);
         }
 
         // if (province) {
         //     degreeQuery.relation(Degree);
         // }
 
-        const degreeResult = await degreeQuery.getMany();
-        console.log(degreeResult);
-
         // return degreeResult;
-        const slug = course.replace("-", " ");
 
-        const degrees = await AppDataSource.manager.find(Degree, {
-            where: {
-                name: degree,
-                courses: { name: slug, schools: { province } },
-            },
-            relations: {
-                courses: {
-                    schools: true,
-                },
-            },
-        });
-
-        if (degrees) {
-            return {
-                degrees,
-            };
-        }
         // eslint-disable-next-line consistent-return, no-useless-return
         return;
     }
