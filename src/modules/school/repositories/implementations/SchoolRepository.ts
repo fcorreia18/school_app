@@ -2,6 +2,7 @@ import { Repository } from "typeorm";
 
 import { AppDataSource } from "../../../../data-source";
 import { ICreateSchoolDTO } from "../../dtos/ICreateSchoolDTO";
+import { Course } from "../../entities/Course";
 import { Degree } from "../../entities/Degree";
 import { School } from "../../entities/School";
 import { ISchoolRepository } from "../ISchoolRepository";
@@ -85,25 +86,31 @@ export class SchoolRepository implements ISchoolRepository {
         degrees?: Degree[];
         schools?: School[];
     } | void> {
-        //     const carsQuery = await this.repository
-        //     .createQueryBuilder("c")
-        //     .where("available = :available", { available: true });
+        const degreeRepository = AppDataSource.manager.getRepository(Degree);
 
-        //   if (brand) {
-        //     carsQuery.andWhere("brand = :brand", { brand });
-        //   }
+        const degreeQuery = await degreeRepository
+            .createQueryBuilder("d")
+            .where("d.name = :degree", { degree });
 
-        //   if (name) {
-        //     carsQuery.andWhere("name = :name", { name });
-        //   }
+        if (course) {
+            const findDegree = await degreeQuery.getOne();
+            degreeQuery
+                .relation(Degree, "courses")
+                .of(findDegree.id)
+                .loadMany()
+                .then((data) => {
+                    console.log(data);
+                });
+        }
 
-        //   if (category_id) {
-        //     carsQuery.andWhere("category_id = :category_id", { category_id });
-        //   }
+        // if (province) {
+        //     degreeQuery.relation(Degree);
+        // }
 
-        //   const cars = await carsQuery.getMany();
+        const degreeResult = await degreeQuery.getMany();
+        console.log(degreeResult);
 
-        //   return cars;
+        // return degreeResult;
         const slug = course.replace("-", " ");
 
         const degrees = await AppDataSource.manager.find(Degree, {
