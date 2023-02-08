@@ -4,7 +4,6 @@ import { AppDataSource } from "../../../../data-source";
 import { ICreateCourseDTO } from "../../dtos/ICreateCourseDTO";
 import { Course } from "../../entities/Course";
 import { Degree } from "../../entities/Degree";
-import { SchoolCourse } from "../../entities/SchoolCourse";
 import { ICourseRepository } from "../ICourseRepository";
 
 export class CourseRepository implements ICourseRepository {
