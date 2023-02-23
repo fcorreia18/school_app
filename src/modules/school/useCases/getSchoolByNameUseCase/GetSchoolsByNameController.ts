@@ -9,7 +9,7 @@ export class GetSchoolsByNameController {
             GetSchoolsByNameUseCase
         );
         const { name } = req.query;
-        const schools = await getSchoolsByNameUseCase.execute(name);
+        const schools = await getSchoolsByNameUseCase.execute(name as string);
         return res.status(201).json(schools);
     }
 }
