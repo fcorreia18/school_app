@@ -1,5 +1,4 @@
 import { AppDataSource } from "../data-source";
-import { School } from "../modules/school/entities/School";
 
 AppDataSource.initialize()
     .then(() => {

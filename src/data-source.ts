@@ -15,6 +15,7 @@ const remotePostgresDataSource = new DataSource({
     migrations: ["./src/database/migrations/*.ts"],
 });
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const localPostgresDataSource = new DataSource({
     type: "postgres",
     host: "database_school_app",

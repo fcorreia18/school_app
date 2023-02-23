@@ -7,7 +7,15 @@ export interface ICreateSchoolDTO {
     longitude: number;
     latitude: number;
     // degree: SCHOOLDEGREE;
+    responsible?: string;
+    responsible_number?: number;
+    responsible_identity?: string;
     about?: string;
+    license?: string;
+    dispatch?: string;
+    regime?: string;
+    capacity?: number;
+    property?: string;
     opening_hours?: string;
     open_on_weekends?: boolean;
     website?: string;

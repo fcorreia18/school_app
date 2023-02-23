@@ -3,9 +3,7 @@ import {
     CreateDateColumn,
     Entity,
     JoinColumn,
-    JoinTable,
     ManyToMany,
-    ManyToOne,
     OneToMany,
     PrimaryGeneratedColumn,
     UpdateDateColumn,
@@ -45,7 +43,31 @@ export class School {
     longitude: number;
 
     @Column()
+    responsible: string;
+
+    @Column()
+    responsible_number: number;
+
+    @Column()
+    responsible_identity: string;
+
+    @Column()
     about: string;
+
+    @Column()
+    license: string;
+
+    @Column()
+    dispatch: string;
+
+    @Column()
+    regime: string;
+
+    @Column()
+    capacity: number;
+
+    @Column()
+    property: string;
 
     @Column()
     opening_hours: string;

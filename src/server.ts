@@ -23,8 +23,6 @@ app.use(cors());
 app.use("/api/v1", routes);
 
 app.get("/", async (req, res) => {
-    // const schoolsRepo = AppDataSource.getRepository(School);
-    // const schools = await schoolsRepo.find();
     const schools = await AppDataSource.manager.find(School);
     res.json(schools);
 });
@@ -42,5 +40,4 @@ app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerFile));
 // end middlewares
 
-// sa
 app.listen(8000, () => console.log("listening at port 8000"));

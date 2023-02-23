@@ -13,10 +13,6 @@ export class CreateSchool1670420074383 implements MigrationInterface {
                         isPrimary: true,
                         isGenerated: true,
                     },
-                    // {
-                    //     name: "course_id",
-                    //     type: "uuid",
-                    // },
                     {
                         name: "name",
                         type: "varchar",
