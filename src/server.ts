@@ -31,9 +31,12 @@ app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
     if (error instanceof AppError) {
         return res.status(error.statusCode).json({ message: error.message });
     }
+
     return res.status(500).json({
         status: "error",
-        message: `Internal Server Error - ${error.message}`,
+        message: `Internal Server Error - ${
+            error.message + JSON.stringify(AppDataSource.options)
+        }`,
     });
 });
 

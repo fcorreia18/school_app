@@ -9,7 +9,7 @@ const remotePostgresDataSource = new DataSource({
         `${
             path.extname(path.basename(__filename)) === ".ts"
                 ? `${__dirname}/modules/**/entities/*.ts`
-                : `./build/modules/**/entities/*.js`
+                : `./build/modules/**/entiti es/*.js`
         }`,
     ],
     migrations: ["./src/database/migrations/*.ts"],
@@ -31,6 +31,7 @@ const localPostgresDataSource = new DataSource({
     ],
     migrations: ["./src/database/migrations/*.ts"],
 });
+
 export const AppDataSource = remotePostgresDataSource;
 
 AppDataSource.initialize()
