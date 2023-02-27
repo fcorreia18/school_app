@@ -2,6 +2,8 @@ import "reflect-metadata";
 import "express-async-errors";
 import cors from "cors";
 import express, { Application, NextFunction, Request, Response } from "express";
+import { writeFile, mkdir } from "fs";
+import path from "path";
 import swaggerUI from "swagger-ui-express";
 
 // import "./dataSource";
@@ -31,12 +33,18 @@ app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
     if (error instanceof AppError) {
         return res.status(error.statusCode).json({ message: error.message });
     }
-
+    writeFile(
+        `logs.txt`,
+        JSON.stringify(AppDataSource.options),
+        "utf8",
+        (err) => {
+            if (err) throw new AppError(err.message, +err.code);
+            console.log("The file has been saved!");
+        }
+    );
     return res.status(500).json({
         status: "error",
-        message: `Internal Server Error - ${
-            error.message + JSON.stringify(AppDataSource.options)
-        }`,
+        message: `Internal Server Error - ${error.message}`,
     });
 });
 

@@ -1,0 +1,1 @@
+{"type":"postgres","url":"postgresql://postgres:wIHk3VJbuTsZoWY8@db.lwzxkuswkejydxyuhoxc.supabase.co:5432/postgres","entities":["./build/modules/**/entiti es/*.js"],"migrations":["./src/database/migrations/*.ts"]}
