@@ -1,18 +1,19 @@
 import path from "path";
 import { DataSource } from "typeorm";
+
+import { AppError } from "./errors/AppError";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const remotePostgresDataSource = new DataSource({
     type: "postgres",
     url: "postgresql://postgres:wIHk3VJbuTsZoWY8@db.lwzxkuswkejydxyuhoxc.supabase.co:5432/postgres",
-    // url: "postgresql://postgres:hICGIMZilyBYJWuM@db.wjodjswssezcujmuwqwm.supabase.co:5432/postgres",
     entities: [
         `${
             path.extname(path.basename(__filename)) === ".ts"
                 ? `${__dirname}/modules/**/entities/*.ts`
-                : `./build/modules/**/entiti es/*.js`
+                : `./build/modules/**/entitieqs/*.js`
         }`,
     ],
-    migrations: ["./src/database/migrations/*.ts"],
+    // migrations: ["./src/database/migrations/*.ts"],
 });
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -38,4 +39,10 @@ AppDataSource.initialize()
     .then(async () => {
         console.log("database started");
     })
-    .catch((error) => console.log(error));
+    .catch((error) => {
+        try {
+            console.log("SSSSSSS");
+        } catch (err) {
+            throw new AppError(error, 5000);
+        }
+    });

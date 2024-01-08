@@ -2,8 +2,7 @@ import "reflect-metadata";
 import "express-async-errors";
 import cors from "cors";
 import express, { Application, NextFunction, Request, Response } from "express";
-import { writeFile, mkdir } from "fs";
-import path from "path";
+import { writeFile } from "fs";
 import swaggerUI from "swagger-ui-express";
 
 // import "./dataSource";
@@ -35,7 +34,9 @@ app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
     }
     writeFile(
         `logs.txt`,
-        JSON.stringify(AppDataSource.options),
+        `${JSON.stringify(AppDataSource.options)} ${
+            error ? error.stack : "no message"
+        }`,
         "utf8",
         (err) => {
             if (err) throw new AppError(err.message, +err.code);
